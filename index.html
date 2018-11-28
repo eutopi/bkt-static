@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      <title>
+        Bayesian Knowledge Tracing
+      </title>
+      <meta property="og:title" content="Bayesian Knowledge Tracing">
+    <meta charset="utf-8">
+    <meta property="og:type" content="article">
+
+      <meta property="og:description" content="Short description of your project">
+      <meta property="description" content="Short description of your project">
+
+
+    <link rel="stylesheet" href="static/idyll_styles.css">
+  </head>
+  <body>
+    <div id="idyll-mount"><div data-reactroot=""><div class="idyll-root"><div style="max-width:600px;margin-top:0;margin-right:0;margin-bottom:0;margin-left:50px" class=" idyll-text-container"></div><div style="position:fixed" class="fixed"><div><img src="static/images/static.svg" idyll="[object Object]"/></div></div><div class="idyll-scroll" id="idyll-scroll-0" style="position:relative"><div style="max-width:600px;margin-top:0;margin-right:0;margin-bottom:0;margin-left:50px" class=" idyll-text-container"><div class="idyll-scroll-text"><h3>Bayesian Knowledge Tracing</h3><p><em>an explorable explainable</em>
+  <br/>
+  by Tongyu Zhou, Haoyu Sheng, Iris Howley</p><div class="idyll-step "><p>
+  Bayesian knowledge tracing (BKT) is an AI algorithm
+  used in intelligent tutoring systems to model a learner’s
+  mastery of the skill being taught. <br/></p><p>Let us first consider this algorithm
+  (BKT) in the context of an “alchemy” metaphor. Think of the large beaker
+  as representative of the overall mastery of the student for the one skill of interest.
+  The test tubes are representative of the factors that go into
+  calculating mastery.
+  </p></div><div class="idyll-step "><p>
+  These factors are called <em>parameters</em>. BKT uses a total of 4
+  different parameters. From left to right, they are:<br/>1) <strong>init</strong> : probability of learner knowing the skill beforehand <br/>2) <strong>transit</strong> : probability of learner learning the skill after application<br/>3) <strong>slip</strong> : probability of learner messing up when using a known skill<br/>4) <strong>guess</strong> : probability of learner has a lucky guess<br/></p></div><div class="idyll-step "><p>
+    The weights these parameters carry in the equation are determined by
+    the person applying the algorithm.<br/><br/>
+    As we are dealing with probabilities, this person can set each parameter
+    value as anything from 0 to 1. While this is the theoretical setup,
+    these parameter values in practice are usually bounded by more
+    restrictive ranges. <br/></p><p>That is, a common model is to set <em>P(slip)</em> &lt;= 0.1
+    and <em>P(guess)</em> &lt;= 0.3 to make the mastery predictions more realistic. What this
+    does, mathematically, is to minimize the sum-of-squares residual.
+  </p></div><div class="idyll-step "><p>
+  Before taking the actual evaluation (or after pre-test), the probability
+  of a student mastering the skill is equal to the <em>init</em> probability:<br/><img src="static/images/eq1.png" width="150px" idyll="[object Object]"/><br/>
+  In other words, the greater the <em>init</em> value is, the higher the level of mastery
+  is before any questions are even answered.
+  </p></div><div class="idyll-step "><p>
+  The algorithm relies on something called “conditional probability.” That is,
+  depending on whether a learner answers a current question correctly or incorrectly,
+  the formulas we use to calculate their mastery for that state will be different!<br/><br/>
+  Correct answer: <br/><img src="static/images/eq2correct.png" width="420px" idyll="[object Object]"/><br/>
+   Incorrect answer: <br/><img src="static/images/eq2wrong.png" width="420px" idyll="[object Object]"/></p></div><div class="idyll-step "><p>
+  Continuing with the notion of “conditional probability,” the mastery of a current
+  state also depends on the mastery of a previous state. <br/></p><p>This is a “Markov chain”, so the mastery of the most recent state is both
+  dependent on the previous immediate state (more significantly) and the
+  first state (less significantly). <br/></p><p>Note that this means even, when a learner gets everything wrong, the mastery still
+  increases, albeit by a little bit.
+  </p></div><div class="idyll-step "> The learner continues to answer questions...   </div><div class="idyll-step "><p> Until they have achieved at least 95% mastery. Note that
+  this is the only requirement--it does not matter how many questions they
+  have answered thus far or how many correct streaks they have. Now, the
+  skill is mastered!</p><p>Congrats on finishing the explainable!<br/><a url="https://some.url" href="https://some.url">Click here</a> to continue on to the next step</p></div></div></div></div></div></div></div>
+    <script src="static/idyll_index.js"></script>
+  </body>
+</html>
