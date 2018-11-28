@@ -28,7 +28,9 @@
   calculating mastery.
   </p></div><div class="idyll-step "><p>
   These factors are called <em>parameters</em>. BKT uses a total of 4
-  different parameters. From left to right, they are:<br/>1) <strong>init</strong> : probability of learner knowing the skill beforehand <br/>2) <strong>transit</strong> : probability of learner learning the skill after application<br/>3) <strong>slip</strong> : probability of learner messing up when using a known skill<br/>4) <strong>guess</strong> : probability of learner has a lucky guess<br/></p></div><div class="idyll-step "><p>
+  different parameters. From left to right, they are:<br/>1) <strong>init</strong> : probability of learner knowing the skill beforehand <br/>2) <strong>transit</strong> : probability of learner learning the skill after application<br/>3) <strong>slip</strong> : probability of learner messing up when using a known skill<br/>4) <strong>guess</strong> : probability of learner has a lucky guess<br/><br/>
+  The probabilities of these parameters ultimately affect mastery, which is the
+  probability that a particular skill has been learned.</p></div><div class="idyll-step "><p>
     The weights these parameters carry in the equation are determined by
     the person applying the algorithm.<br/><br/>
     As we are dealing with probabilities, this person can set each parameter
@@ -39,17 +41,17 @@
     does, mathematically, is to minimize the sum-of-squares residual.
   </p></div><div class="idyll-step "><p>
   Before taking the actual evaluation (or after pre-test), the probability
-  of a student mastering the skill is equal to the <em>init</em> probability:<br/><img src="static/images/eq1.png" width="150px" idyll="[object Object]"/><br/>
+  of a student mastering the skill is equal to the <em>init</em> probability:<br/><img src="static/images/eqa.svg" width="150px" idyll="[object Object]"/><br/>
   In other words, the greater the <em>init</em> value is, the higher the level of mastery
   is before any questions are even answered.
   </p></div><div class="idyll-step "><p>
   The algorithm relies on something called “conditional probability.” That is,
   depending on whether a learner answers a current question correctly or incorrectly,
   the formulas we use to calculate their mastery for that state will be different!<br/><br/>
-  Correct answer: <br/><img src="static/images/eq2correct.png" width="420px" idyll="[object Object]"/><br/>
-   Incorrect answer: <br/><img src="static/images/eq2wrong.png" width="420px" idyll="[object Object]"/></p></div><div class="idyll-step "><p>
+  Correct answer: <br/><img src="static/images/eqb.svg" width="420px" idyll="[object Object]"/><br/>
+   Incorrect answer: <br/><img src="static/images/eqc.svg" width="420px" idyll="[object Object]"/></p></div><div class="idyll-step "><p>
   Continuing with the notion of “conditional probability,” the mastery of a current
-  state also depends on the mastery of a previous state. <br/></p><p>This is a “Markov chain”, so the mastery of the most recent state is both
+  state also depends on the mastery of a previous state. <br/><img src="static/images/eqd.svg" width="420px" idyll="[object Object]"/><br/></p><p>This is a “Markov chain”, so the mastery of the most recent state is both
   dependent on the previous immediate state (more significantly) and the
   first state (less significantly). <br/></p><p>Note that this means even, when a learner gets everything wrong, the mastery still
   increases, albeit by a little bit.
